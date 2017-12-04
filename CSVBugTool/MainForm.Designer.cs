@@ -20,6 +20,7 @@ namespace CSVBugTool
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 		private System.Windows.Forms.Button NeedDetailInfo;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		private System.Windows.Forms.Button SaveButton;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -48,6 +49,7 @@ namespace CSVBugTool
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.NeedDetailInfo = new System.Windows.Forms.Button();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.SaveButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -67,7 +69,7 @@ namespace CSVBugTool
 			// OpenFile
 			// 
 			this.OpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.OpenFile.Location = new System.Drawing.Point(614, 12);
+			this.OpenFile.Location = new System.Drawing.Point(559, 12);
 			this.OpenFile.Name = "OpenFile";
 			this.OpenFile.Size = new System.Drawing.Size(75, 23);
 			this.OpenFile.TabIndex = 1;
@@ -77,9 +79,11 @@ namespace CSVBugTool
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(508, 15);
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.Enabled = false;
+			this.textBox1.Location = new System.Drawing.Point(525, 14);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(100, 20);
+			this.textBox1.Size = new System.Drawing.Size(28, 20);
 			this.textBox1.TabIndex = 2;
 			// 
 			// openFileDialog1
@@ -98,11 +102,23 @@ namespace CSVBugTool
 			this.NeedDetailInfo.UseVisualStyleBackColor = true;
 			this.NeedDetailInfo.Click += new System.EventHandler(this.NeedDetailInfoClick);
 			// 
+			// SaveButton
+			// 
+			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SaveButton.Location = new System.Drawing.Point(640, 12);
+			this.SaveButton.Name = "SaveButton";
+			this.SaveButton.Size = new System.Drawing.Size(49, 23);
+			this.SaveButton.TabIndex = 4;
+			this.SaveButton.Text = "Save";
+			this.SaveButton.UseVisualStyleBackColor = true;
+			this.SaveButton.Click += new System.EventHandler(this.SaveButtonClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(701, 322);
+			this.Controls.Add(this.SaveButton);
 			this.Controls.Add(this.NeedDetailInfo);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.OpenFile);

@@ -37,25 +37,41 @@ namespace CSVBugTool
 			using (System.IO.StreamReader FileStream = new System.IO.StreamReader(CSVOpenFileDialog.OpenFile(), System.Text.Encoding.UTF8))
 			{
 				var Row = 0;
-				for (string InputString; !FileStream.EndOfStream;)
+				List<string> Parts = new List<string>();
+				for (string InputString = ""; !FileStream.EndOfStream;)
 				{
-					InputString = FileStream.ReadLine();
-					var Parts = InputString.Split(splitOpt, StringSplitOptions.None);
-					if (Row == 0)
+					Parts.Clear();
+					InputString = "";
+					do
 					{
-						for (var i = 0; i < this.dataGridView1.Columns.Count; ++i)
+						InputString = FileStream.ReadLine();
+						List<string> buffer = InputString.Split(splitOpt, StringSplitOptions.None).ToList();
+						if (Parts.Count > 0)
 						{
-							Parts = Parts.Except(Parts.Where(Name => Name == this.dataGridView1.Columns[i].Name)).ToArray();
+							Parts[Parts.Count - 1] = Parts.Last() + "\n" + buffer.First();
+							buffer.RemoveAt(0);
 						}
-						foreach(var Column in Parts)
+						Parts.AddRange(buffer);
+						if (Row == 0)
 						{
-							this.dataGridView1.Columns.Add(Column, Column);
+							for (var i = 0; i < this.dataGridView1.Columns.Count; ++i)
+							{
+								Parts = Parts.Except(Parts.Where(Name => Name == this.dataGridView1.Columns[i].Name)).ToList();
+							}
+							foreach(var Column in Parts)
+							{
+								this.dataGridView1.Columns.Add(Column, Column);
+							}
+						}
+						else
+						{
+							if (Parts.Count >= this.dataGridView1.Columns.Count)
+							{
+								this.dataGridView1.Rows.Add(Parts.ToArray());
+							}
 						}
 					}
-					else
-					{
-						this.dataGridView1.Rows.Add(Parts);
-					}
+					while (Parts.Count < this.dataGridView1.Columns.Count);
 					++Row;
 					this.textBox1.Text = Row.ToString();
 				}
@@ -91,32 +107,57 @@ namespace CSVBugTool
 		{
 			foreach (DataGridViewColumn column in this.dataGridView1.Columns)
 			{
-				this.dataGridView1.Rows[rowIndex].Cells[column.Index].Value = sData[column.Name];
+				try
+				{
+					this.dataGridView1.Rows[rowIndex].Cells[column.Index].Value = sData[column.Name];
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+					throw new NullReferenceException();
+				}
 			}
 		}
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			this.saveFileDialog1.ShowDialog();
+			SaveNeed();
+		}
+		void SaveButtonClick(object sender, EventArgs e)
+		{
+			this.saveFileDialog1.FileName = this.openFileDialog1.FileName;
+			SaveNeed();
+		}
+		void SaveNeed()
+		{
 			if (this.saveFileDialog1.FileName != "")
 			{
 				using(System.IO.StreamWriter FileStream = new System.IO.StreamWriter(this.saveFileDialog1.OpenFile(), System.Text.Encoding.UTF8))
 				{
-					List<string> OutputString = new List<string>();
-					OutputString.Clear();
+					string stringForWrite = "";
 					foreach (DataGridViewColumn column in this.dataGridView1.Columns)
 					{
-						OutputString.Add(column.Name + splitOpt[0]);
+						stringForWrite += column.Name + splitOpt[0];
 					}
-					FileStream.WriteLine(string.Concat(OutputString).TrimEnd(splitOpt[0].ToArray()));
+					FileStream.WriteLine(stringForWrite.TrimEnd(splitOpt[0].ToArray()));
 					foreach (DataGridViewRow row in this.dataGridView1.Rows)
 					{
-						OutputString.Clear();
+						stringForWrite = "";
 						foreach (DataGridViewCell cell in row.Cells)
 						{
-							OutputString.Add(cell.Value.ToString() + splitOpt[0]);
+							if (cell.Value == null)
+							{
+								break;
+							}
+							stringForWrite += cell.Value.ToString() + splitOpt[0];
 						}
-						FileStream.WriteLine(string.Concat(OutputString).TrimEnd(splitOpt[0].ToArray()));
+						stringForWrite = stringForWrite.TrimEnd(splitOpt[0].ToArray());
+						if (stringForWrite != "")
+						{
+							FileStream.WriteLine(stringForWrite);
+						}
 					}
+					FileStream.Close();
 				}
 			}
 		}

@@ -45,6 +45,8 @@ namespace CSVBugTool
 		private System.Windows.Forms.ComboBox Priority;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.ComboBox Status;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.RichTextBox History;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -98,6 +100,8 @@ namespace CSVBugTool
 			this.Priority = new System.Windows.Forms.ComboBox();
 			this.label15 = new System.Windows.Forms.Label();
 			this.Status = new System.Windows.Forms.ComboBox();
+			this.label16 = new System.Windows.Forms.Label();
+			this.History = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
 			// TName
@@ -114,9 +118,9 @@ namespace CSVBugTool
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.Location = new System.Drawing.Point(12, 59);
+			this.label1.Location = new System.Drawing.Point(13, 59);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(497, 17);
+			this.label1.Size = new System.Drawing.Size(496, 17);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Name";
 			// 
@@ -144,7 +148,7 @@ namespace CSVBugTool
 			// 
 			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.Location = new System.Drawing.Point(12, 293);
+			this.label3.Location = new System.Drawing.Point(13, 293);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(497, 17);
 			this.label3.TabIndex = 5;
@@ -154,7 +158,7 @@ namespace CSVBugTool
 			// 
 			this.StepsToReproduce.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.StepsToReproduce.Location = new System.Drawing.Point(12, 313);
+			this.StepsToReproduce.Location = new System.Drawing.Point(13, 313);
 			this.StepsToReproduce.Name = "StepsToReproduce";
 			this.StepsToReproduce.Size = new System.Drawing.Size(497, 55);
 			this.StepsToReproduce.TabIndex = 4;
@@ -164,7 +168,7 @@ namespace CSVBugTool
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.Location = new System.Drawing.Point(12, 371);
+			this.label4.Location = new System.Drawing.Point(13, 371);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(497, 17);
 			this.label4.TabIndex = 7;
@@ -174,7 +178,7 @@ namespace CSVBugTool
 			// 
 			this.Result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.Result.Location = new System.Drawing.Point(12, 391);
+			this.Result.Location = new System.Drawing.Point(13, 391);
 			this.Result.Name = "Result";
 			this.Result.Size = new System.Drawing.Size(497, 55);
 			this.Result.TabIndex = 6;
@@ -234,7 +238,7 @@ namespace CSVBugTool
 			// Code
 			// 
 			this.Code.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.Code.Location = new System.Drawing.Point(440, 26);
+			this.Code.Location = new System.Drawing.Point(440, 25);
 			this.Code.Name = "Code";
 			this.Code.Size = new System.Drawing.Size(69, 20);
 			this.Code.TabIndex = 15;
@@ -278,7 +282,7 @@ namespace CSVBugTool
 			// 
 			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.label10.Location = new System.Drawing.Point(12, 449);
+			this.label10.Location = new System.Drawing.Point(13, 449);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(497, 17);
 			this.label10.TabIndex = 21;
@@ -288,7 +292,7 @@ namespace CSVBugTool
 			// 
 			this.ExpectedResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.ExpectedResult.Location = new System.Drawing.Point(12, 469);
+			this.ExpectedResult.Location = new System.Drawing.Point(13, 469);
 			this.ExpectedResult.Name = "ExpectedResult";
 			this.ExpectedResult.Size = new System.Drawing.Size(497, 55);
 			this.ExpectedResult.TabIndex = 20;
@@ -297,7 +301,7 @@ namespace CSVBugTool
 			// label11
 			// 
 			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label11.Location = new System.Drawing.Point(13, 527);
+			this.label11.Location = new System.Drawing.Point(13, 612);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(112, 20);
 			this.label11.TabIndex = 22;
@@ -306,7 +310,7 @@ namespace CSVBugTool
 			// Author
 			// 
 			this.Author.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.Author.Location = new System.Drawing.Point(13, 550);
+			this.Author.Location = new System.Drawing.Point(13, 635);
 			this.Author.Name = "Author";
 			this.Author.Size = new System.Drawing.Size(113, 20);
 			this.Author.TabIndex = 23;
@@ -314,7 +318,7 @@ namespace CSVBugTool
 			// AssignedTo
 			// 
 			this.AssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.AssignedTo.Location = new System.Drawing.Point(131, 550);
+			this.AssignedTo.Location = new System.Drawing.Point(131, 635);
 			this.AssignedTo.Name = "AssignedTo";
 			this.AssignedTo.Size = new System.Drawing.Size(113, 20);
 			this.AssignedTo.TabIndex = 25;
@@ -322,7 +326,7 @@ namespace CSVBugTool
 			// label12
 			// 
 			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label12.Location = new System.Drawing.Point(131, 527);
+			this.label12.Location = new System.Drawing.Point(131, 612);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(112, 20);
 			this.label12.TabIndex = 24;
@@ -332,7 +336,13 @@ namespace CSVBugTool
 			// 
 			this.Severity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.Severity.FormattingEnabled = true;
-			this.Severity.Location = new System.Drawing.Point(249, 550);
+			this.Severity.Items.AddRange(new object[] {
+			"Blocker",
+			"Critical",
+			"Major",
+			"Minor",
+			"Trivial"});
+			this.Severity.Location = new System.Drawing.Point(249, 635);
 			this.Severity.Name = "Severity";
 			this.Severity.Size = new System.Drawing.Size(86, 21);
 			this.Severity.TabIndex = 26;
@@ -340,7 +350,7 @@ namespace CSVBugTool
 			// label13
 			// 
 			this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.label13.Location = new System.Drawing.Point(249, 527);
+			this.label13.Location = new System.Drawing.Point(249, 612);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(86, 20);
 			this.label13.TabIndex = 27;
@@ -349,7 +359,7 @@ namespace CSVBugTool
 			// label14
 			// 
 			this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.label14.Location = new System.Drawing.Point(341, 527);
+			this.label14.Location = new System.Drawing.Point(341, 612);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(86, 20);
 			this.label14.TabIndex = 29;
@@ -359,7 +369,11 @@ namespace CSVBugTool
 			// 
 			this.Priority.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.Priority.FormattingEnabled = true;
-			this.Priority.Location = new System.Drawing.Point(341, 550);
+			this.Priority.Items.AddRange(new object[] {
+			"High",
+			"Medium",
+			"Low"});
+			this.Priority.Location = new System.Drawing.Point(341, 635);
 			this.Priority.Name = "Priority";
 			this.Priority.Size = new System.Drawing.Size(86, 21);
 			this.Priority.TabIndex = 28;
@@ -367,7 +381,7 @@ namespace CSVBugTool
 			// label15
 			// 
 			this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.label15.Location = new System.Drawing.Point(436, 527);
+			this.label15.Location = new System.Drawing.Point(436, 612);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(73, 20);
 			this.label15.TabIndex = 31;
@@ -377,16 +391,44 @@ namespace CSVBugTool
 			// 
 			this.Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.Status.FormattingEnabled = true;
-			this.Status.Location = new System.Drawing.Point(433, 550);
+			this.Status.Items.AddRange(new object[] {
+			"Open",
+			"In Progress",
+			"Closed",
+			"Resolved",
+			"Reopened"});
+			this.Status.Location = new System.Drawing.Point(433, 635);
 			this.Status.Name = "Status";
 			this.Status.Size = new System.Drawing.Size(76, 21);
 			this.Status.TabIndex = 30;
+			// 
+			// label16
+			// 
+			this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.label16.Location = new System.Drawing.Point(14, 527);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(497, 17);
+			this.label16.TabIndex = 33;
+			this.label16.Text = "History";
+			// 
+			// History
+			// 
+			this.History.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.History.Location = new System.Drawing.Point(14, 547);
+			this.History.Name = "History";
+			this.History.Size = new System.Drawing.Size(497, 55);
+			this.History.TabIndex = 32;
+			this.History.Text = "";
 			// 
 			// DetailInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(521, 580);
+			this.ClientSize = new System.Drawing.Size(521, 665);
+			this.Controls.Add(this.label16);
+			this.Controls.Add(this.History);
 			this.Controls.Add(this.label15);
 			this.Controls.Add(this.Status);
 			this.Controls.Add(this.label14);
