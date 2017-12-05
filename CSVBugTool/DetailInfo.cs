@@ -48,7 +48,7 @@ namespace CSVBugTool
 				this.StepsToReproduce.Text = row["StepsToReproduce"];
 				this.Result.Text = row["Result"];
 				this.ExpectedResult.Text = row["ExpectedResult"];
-				this.ExpectedResult.Text = row["History"];
+				this.History.Text = row["History"];
 			}
 			catch (Exception ex)
 			{

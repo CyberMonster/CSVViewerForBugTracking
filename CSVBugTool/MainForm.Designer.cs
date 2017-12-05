@@ -91,6 +91,7 @@ namespace CSVBugTool
 			this.openFileDialog1.DefaultExt = "csv";
 			this.openFileDialog1.FileName = "openFileDialog1";
 			this.openFileDialog1.Title = "OpenBugsDB";
+			this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1FileOk);
 			// 
 			// NeedDetailInfo
 			// 
@@ -101,6 +102,10 @@ namespace CSVBugTool
 			this.NeedDetailInfo.Text = "MoreInfo";
 			this.NeedDetailInfo.UseVisualStyleBackColor = true;
 			this.NeedDetailInfo.Click += new System.EventHandler(this.NeedDetailInfoClick);
+			// 
+			// saveFileDialog1
+			// 
+			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1FileOk);
 			// 
 			// SaveButton
 			// 

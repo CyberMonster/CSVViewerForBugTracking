@@ -25,6 +25,7 @@ namespace CSVBugTool
 		public MainForm()
 		{
 			InitializeComponent();
+			OpenFileClick(null, null);
 		}
 		void OpenFileClick(object sender, EventArgs e)
 		{
@@ -34,6 +35,15 @@ namespace CSVBugTool
 				return;
 			}
 			CSVOpenFileDialog.ShowDialog();
+		}
+		
+		void OpenFileNeed()
+		{
+			var CSVOpenFileDialog = this.openFileDialog1;
+			if (CSVOpenFileDialog == null)
+			{
+				return;
+			}
 			using (System.IO.StreamReader FileStream = new System.IO.StreamReader(CSVOpenFileDialog.OpenFile(), System.Text.Encoding.UTF8))
 			{
 				var Row = 0;
@@ -41,10 +51,14 @@ namespace CSVBugTool
 				for (string InputString = ""; !FileStream.EndOfStream;)
 				{
 					Parts.Clear();
-					InputString = "";
 					do
 					{
 						InputString = FileStream.ReadLine();
+						if (InputString == null)
+						{
+							MessageBox.Show("Error occurred");
+							break;
+						}
 						List<string> buffer = InputString.Split(splitOpt, StringSplitOptions.None).ToList();
 						if (Parts.Count > 0)
 						{
@@ -78,6 +92,7 @@ namespace CSVBugTool
 				FileStream.Close();
 			}
 		}
+		
 		void NeedDetailInfoClick(object sender, EventArgs e)
 		{
 			try
@@ -121,7 +136,6 @@ namespace CSVBugTool
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
 			this.saveFileDialog1.ShowDialog();
-			SaveNeed();
 		}
 		void SaveButtonClick(object sender, EventArgs e)
 		{
@@ -142,24 +156,40 @@ namespace CSVBugTool
 					FileStream.WriteLine(stringForWrite.TrimEnd(splitOpt[0].ToArray()));
 					foreach (DataGridViewRow row in this.dataGridView1.Rows)
 					{
-						stringForWrite = "";
-						foreach (DataGridViewCell cell in row.Cells)
+						if (row.Index != this.dataGridView1.Rows.Count - 1)
 						{
-							if (cell.Value == null)
+							stringForWrite = "";
+							foreach (DataGridViewCell cell in row.Cells)
 							{
-								break;
+								if (cell.Value == null)
+								{
+									cell.Value = "";
+								}
+								stringForWrite += cell.Value.ToString() + splitOpt[0];
 							}
-							stringForWrite += cell.Value.ToString() + splitOpt[0];
+							stringForWrite = string.Concat(stringForWrite.Take(stringForWrite.Length - splitOpt[0].Length));
+							//stringForWrite = stringForWrite.TrimEnd(splitOpt[0].ToArray());
+							if (stringForWrite != "")
+							{
+								FileStream.WriteLine(stringForWrite);
+							}
 						}
-						stringForWrite = stringForWrite.TrimEnd(splitOpt[0].ToArray());
-						if (stringForWrite != "")
+						else
 						{
-							FileStream.WriteLine(stringForWrite);
+							;
 						}
 					}
 					FileStream.Close();
 				}
 			}
+		}
+		void SaveFileDialog1FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			SaveNeed();
+		}
+		void OpenFileDialog1FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			OpenFileNeed();
 		}
 	}
 }
