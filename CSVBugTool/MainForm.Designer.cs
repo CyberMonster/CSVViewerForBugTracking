@@ -21,6 +21,7 @@ namespace CSVBugTool
 		private System.Windows.Forms.Button NeedDetailInfo;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 		private System.Windows.Forms.Button SaveButton;
+		private System.Windows.Forms.Button ToExcel;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -50,6 +51,7 @@ namespace CSVBugTool
 			this.NeedDetailInfo = new System.Windows.Forms.Button();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.SaveButton = new System.Windows.Forms.Button();
+			this.ToExcel = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -118,11 +120,22 @@ namespace CSVBugTool
 			this.SaveButton.UseVisualStyleBackColor = true;
 			this.SaveButton.Click += new System.EventHandler(this.SaveButtonClick);
 			// 
+			// ToExcel
+			// 
+			this.ToExcel.Location = new System.Drawing.Point(444, 12);
+			this.ToExcel.Name = "ToExcel";
+			this.ToExcel.Size = new System.Drawing.Size(75, 22);
+			this.ToExcel.TabIndex = 5;
+			this.ToExcel.Text = "To Excel";
+			this.ToExcel.UseVisualStyleBackColor = true;
+			this.ToExcel.Click += new System.EventHandler(this.ToExcelClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(701, 322);
+			this.Controls.Add(this.ToExcel);
 			this.Controls.Add(this.SaveButton);
 			this.Controls.Add(this.NeedDetailInfo);
 			this.Controls.Add(this.textBox1);

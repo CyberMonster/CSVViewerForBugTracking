@@ -140,9 +140,9 @@ namespace CSVBugTool
 		void SaveButtonClick(object sender, EventArgs e)
 		{
 			this.saveFileDialog1.FileName = this.openFileDialog1.FileName;
-			SaveNeed();
+			SaveNeed(splitOpt[0]);
 		}
-		void SaveNeed()
+		void SaveNeed(string spOpt, bool removeEnters = false)
 		{
 			if (this.saveFileDialog1.FileName != "")
 			{
@@ -151,9 +151,9 @@ namespace CSVBugTool
 					string stringForWrite = "";
 					foreach (DataGridViewColumn column in this.dataGridView1.Columns)
 					{
-						stringForWrite += column.Name + splitOpt[0];
+						stringForWrite += column.Name + spOpt;
 					}
-					FileStream.WriteLine(stringForWrite.TrimEnd(splitOpt[0].ToArray()));
+					FileStream.WriteLine(stringForWrite.TrimEnd(spOpt.ToArray()));
 					foreach (DataGridViewRow row in this.dataGridView1.Rows)
 					{
 						if (row.Index != this.dataGridView1.Rows.Count - 1)
@@ -165,10 +165,14 @@ namespace CSVBugTool
 								{
 									cell.Value = "";
 								}
-								stringForWrite += cell.Value.ToString() + splitOpt[0];
+								string Buffer = cell.Value.ToString();
+								if (removeEnters)
+								{
+									Buffer = Buffer.Replace("\n", @"").Replace(@";", @",");
+								}
+								stringForWrite += Buffer + spOpt;
 							}
-							stringForWrite = string.Concat(stringForWrite.Take(stringForWrite.Length - splitOpt[0].Length));
-							//stringForWrite = stringForWrite.TrimEnd(splitOpt[0].ToArray());
+							stringForWrite = string.Concat(stringForWrite.Take(stringForWrite.Length - spOpt.Length));
 							if (stringForWrite != "")
 							{
 								FileStream.WriteLine(stringForWrite);
@@ -185,11 +189,22 @@ namespace CSVBugTool
 		}
 		void SaveFileDialog1FileOk(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			SaveNeed();
+			if (System.IO.Path.GetExtension(this.saveFileDialog1.FileName) == ".xls")
+			{
+				SaveNeed(";", true);
+			}
+			else
+			{
+				SaveNeed(splitOpt[0]);
+			}
 		}
 		void OpenFileDialog1FileOk(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			OpenFileNeed();
+		}
+		void ToExcelClick(object sender, EventArgs e)
+		{
+			this.saveFileDialog1.ShowDialog();
 		}
 	}
 }

@@ -36,8 +36,8 @@ namespace CSVBugTool
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.RichTextBox ExpectedResult;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.TextBox Author;
-		private System.Windows.Forms.TextBox AssignedTo;
+		private System.Windows.Forms.ComboBox Author;
+		private System.Windows.Forms.ComboBox AssignedTo;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.ComboBox Severity;
 		private System.Windows.Forms.Label label13;
@@ -91,8 +91,6 @@ namespace CSVBugTool
 			this.label10 = new System.Windows.Forms.Label();
 			this.ExpectedResult = new System.Windows.Forms.RichTextBox();
 			this.label11 = new System.Windows.Forms.Label();
-			this.Author = new System.Windows.Forms.TextBox();
-			this.AssignedTo = new System.Windows.Forms.TextBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.Severity = new System.Windows.Forms.ComboBox();
 			this.label13 = new System.Windows.Forms.Label();
@@ -102,6 +100,8 @@ namespace CSVBugTool
 			this.Status = new System.Windows.Forms.ComboBox();
 			this.label16 = new System.Windows.Forms.Label();
 			this.History = new System.Windows.Forms.RichTextBox();
+			this.AssignedTo = new System.Windows.Forms.ComboBox();
+			this.Author = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// TName
@@ -307,22 +307,6 @@ namespace CSVBugTool
 			this.label11.TabIndex = 22;
 			this.label11.Text = "Author";
 			// 
-			// Author
-			// 
-			this.Author.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.Author.Location = new System.Drawing.Point(13, 635);
-			this.Author.Name = "Author";
-			this.Author.Size = new System.Drawing.Size(113, 20);
-			this.Author.TabIndex = 23;
-			// 
-			// AssignedTo
-			// 
-			this.AssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.AssignedTo.Location = new System.Drawing.Point(131, 635);
-			this.AssignedTo.Name = "AssignedTo";
-			this.AssignedTo.Size = new System.Drawing.Size(113, 20);
-			this.AssignedTo.TabIndex = 25;
-			// 
 			// label12
 			// 
 			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -422,11 +406,41 @@ namespace CSVBugTool
 			this.History.TabIndex = 32;
 			this.History.Text = "";
 			// 
+			// AssignedTo
+			// 
+			this.AssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.AssignedTo.FormattingEnabled = true;
+			this.AssignedTo.Items.AddRange(new object[] {
+			"Алексей Бухальцов",
+			"Олег Чукашев",
+			"Павел Безруков",
+			"Евгений Сайберт"});
+			this.AssignedTo.Location = new System.Drawing.Point(132, 635);
+			this.AssignedTo.Name = "AssignedTo";
+			this.AssignedTo.Size = new System.Drawing.Size(111, 21);
+			this.AssignedTo.TabIndex = 34;
+			// 
+			// Author
+			// 
+			this.Author.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.Author.FormattingEnabled = true;
+			this.Author.Items.AddRange(new object[] {
+			"Алексей Бухальцов",
+			"Олег Чукашев",
+			"Павел Безруков",
+			"Евгений Сайберт"});
+			this.Author.Location = new System.Drawing.Point(12, 635);
+			this.Author.Name = "Author";
+			this.Author.Size = new System.Drawing.Size(113, 21);
+			this.Author.TabIndex = 35;
+			// 
 			// DetailInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(521, 665);
+			this.Controls.Add(this.Author);
+			this.Controls.Add(this.AssignedTo);
 			this.Controls.Add(this.label16);
 			this.Controls.Add(this.History);
 			this.Controls.Add(this.label15);
@@ -435,9 +449,7 @@ namespace CSVBugTool
 			this.Controls.Add(this.Priority);
 			this.Controls.Add(this.label13);
 			this.Controls.Add(this.Severity);
-			this.Controls.Add(this.AssignedTo);
 			this.Controls.Add(this.label12);
-			this.Controls.Add(this.Author);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.ExpectedResult);
